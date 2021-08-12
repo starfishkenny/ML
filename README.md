@@ -10,4 +10,5 @@
   - Ref: <단단한 머신러닝> 조우쯔화 지음, 김태헌 옮김
 
 * Kaggle `30 Days of ML` Program (2021.08 ~)
-  - Reviewed through Python basics
+  - Reviewed through Python basics (Day1 ~ Day7)
+  - Machine Learning introduction (Day8 ~ )
