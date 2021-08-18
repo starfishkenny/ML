@@ -29,3 +29,12 @@
 
 
 # Kaggle - Intermediate Machine Learning
+
+  ## Introduction
+
+  * Review (RandomForest)
+
+  ## Missing Values
+
+
+  ## Categorical Variables
