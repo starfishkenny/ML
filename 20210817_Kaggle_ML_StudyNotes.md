@@ -1,7 +1,10 @@
 # Kaggle - Intro to Machine Learning
 
  ## How Models Work
-
+  
+  * Decision Tree
+  * fitting (or training) = capturing patterns from data
+  * leaf = bottom of the tree where we make our predictions
  
  ## Basic Data Exploration
 
@@ -23,3 +26,6 @@
    * Housing Prices Competition for Kaggle Learn Users
 
  ## Bonus Lesson: Intro to AutoML
+
+
+# Kaggle - Intermediate Machine Learning
