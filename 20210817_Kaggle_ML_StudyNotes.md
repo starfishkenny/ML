@@ -19,3 +19,7 @@
 
 
  ## Machine Learning Competitions
+
+   * Housing Prices Competition for Kaggle Learn Users
+
+ ## Bonus Lesson: Intro to AutoML
