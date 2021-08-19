@@ -1,45 +1,53 @@
 # Kaggle - Intro to Machine Learning
 
- ## How Models Work
+  ## How Models Work
   
-  * Decision Tree
-  * fitting (or training) = capturing patterns from data
-  * leaf = bottom of the tree where we make our predictions
+    * Decision Tree
+    
+    * fitting (or training) = capturing patterns from data
+    
+    * leaf = bottom of the tree where we make our predictions
  
- ## Basic Data Exploration
+  ## Basic Data Exploration
   
-  * shape
-  * describe
+    * shape
+    
+    * describe
 
- ## Your First Machine Learning Model
-
-
- ## Model Validation
+  ## Your First Machine Learning Model
 
 
- ## Underfitting and Overfitting
+  ## Model Validation
 
 
- ## Random Forests
+  ## Underfitting and Overfitting
 
 
- ## Machine Learning Competitions
+  ## Random Forests
 
-   * Housing Prices Competition for Kaggle Learn Users
 
- ## Bonus Lesson: Intro to AutoML
+  ## Machine Learning Competitions
+
+    * Housing Prices Competition for Kaggle Learn Users
+
+  ## Bonus Lesson: Intro to AutoML
 
 
 # Kaggle - Intermediate Machine Learning
 
   ## Introduction
 
-  * Review (RandomForest)
+    * Review (RandomForest)
 
   ## Missing Values
 
-  * Drop columns with missing values
-  * Imputation
-  * Imputation+
+    * Mainly 3 Approaches
+    
+      - Drop columns with missing values
+    
+      - Imputation
+    
+      - Imputation+
 
   ## Categorical Variables
+
