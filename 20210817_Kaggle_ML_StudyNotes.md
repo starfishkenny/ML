@@ -50,4 +50,36 @@
       - Imputation+
 
   ## Categorical Variables
+    
+    * Mainly 3 Approaches
+
+      - Drop Categorical Variables
+
+      - Ordinal Encoding
+        
+        + Assigning each unique value to a different integer 
+
+        + Ordinal Variables (categorical variables with clear ordering)
+        
+        + Works well with tree-based models (DecisionTree, RandomForest...)
+
+        + from sklearn.preprocessing import OrdinalEncoder
+
+          - loop over the categorical variables and apply the ordinal encoder separately to each column
+
+      - One-Hot Encoding
+
+        + Creating new columns indicating the presence (or absence) of each possible value in the original data
+
+        + Nominal Variables (does not assume ordering)
+
+        + Generally does not perform well if the categorical variable takes on a large number of values
+
+        + from sklearn.preprocessing import OneHotEncoder
+
+          - Set handle_unknown='ignore' to avoid errors when the validation data contains classes that aren't represented in the training data
+          
+          - Setting sparse=False ensures that the encoded columns are returned as a numpy array (instead of a sparse matrix)
+
+          - supply only the categorical columns that we want to be one-hot encoded
 
