@@ -7,7 +7,9 @@
   * leaf = bottom of the tree where we make our predictions
  
  ## Basic Data Exploration
-
+  
+  * shape
+  * describe
 
  ## Your First Machine Learning Model
 
@@ -36,5 +38,8 @@
 
   ## Missing Values
 
+  * Drop columns with missing values
+  * Imputation
+  * Imputation+
 
   ## Categorical Variables
