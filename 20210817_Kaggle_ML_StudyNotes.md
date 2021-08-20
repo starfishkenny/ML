@@ -83,6 +83,10 @@
 
           - supply only the categorical columns that we want to be one-hot encoded
 
+    * persnoal note
+      
+      - 
+
   ## Pipelines
 
   ## Cross-Validation
