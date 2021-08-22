@@ -79,72 +79,159 @@
 
       + Generally does not perform well if the categorical variable takes on a large number of values
 
-  ## Pipelines
+## Pipelines
   
-    * from sklearn.pipeline import Pipeline
+  * > from sklearn.pipeline import Pipeline
 
-    * A simple way to keep your data preprocessing and modeling code organized
+  * A simple way to keep your data preprocessing and modeling code organized
 
-    * Benefits
+  * Benefits
 
-      - Cleaner code
+    - Cleaner code
 
-      - Fewer bugs
+    - Fewer bugs
 
-      - Easier to productionize
+    - Easier to productionize
 
-      - More options for model validation
+    - More options for model validation
 
-    * Steps
+  * Steps
 
-      - Define preprocessing steps
+    - Define preprocessing steps
 
-        + from sklearn.compose import ColumnTransformer
+      + > from sklearn.compose import ColumnTransformer
 
-      - Define the model
+    - Define the model
 
-      - Create & evaluate pipeline
+    - Create & evaluate pipeline
       
-  ## Cross-Validation
+## Cross-Validation
 
-    * > from sklearn.model_selection import cross_val_score
+  * > from sklearn.model_selection import cross_val_score
 
-    * Drawbacks of measuring model quality with validation data set
+  * Drawbacks of measuring model quality with validation data set
 
-      - ex) From a dataset with 5000 rows, You will typically keep about 20% of the data as a validation dataset, or 1000 rows 
+    - ex) From a dataset with 5000 rows, You will typically keep about 20% of the data as a validation dataset, or 1000 rows 
       
-        + This leaves some random chance in determining model scores 
+      + This leaves some random chance in determining model scores
         => A model might do well on one set of 1000 rows, even if it would be inaccurate on a different 1000 rows
       
-      - Generally, the larger the validation set, the less "noise" there is in our measure of model quality
+    - Generally, the larger the validation set, the less "noise" there is in our measure of model quality
       
-      - However, we can only get a large validation set by removing rows from our training data, and smaller training datasets mean worse models
+    - However, we can only get a large validation set by removing rows from our training data, and smaller training datasets mean worse models
 
-    * So Cross-Validation!
+  * So Cross-Validation!
 
-      - Running our modeling process on different subsets of the data to get multiple measures of model quality
+    - Running our modeling process on different subsets of the data to get multiple measures of model quality
       
-      - Begin by dividing the data into 5 pieces, each 20% of the full dataset (or, breaking the data into 5 "folds")
+    - Begin by dividing the data into 5 pieces, each 20% of the full dataset (or, breaking the data into 5 "folds")
 
-      - Hold out data from each n-th fold & use everything except the n-th fold for training the model 
+    - Hold out data from each n-th fold & use everything except the n-th fold for training the model 
       
-        + The holdout set is then used to get a n-th estimate of model quality
+      + The holdout set is then used to get a n-th estimate of model quality
 
-        + Repeat this process, using every fold once as the holdout set
+      + Repeat this process, using every fold once as the holdout set
         
-        + Putting this together, 100% of the data is used as holdout at some point, ending up with a measure of model quality that is based on all of the rows in the dataset
+      + Putting this together, 100% of the data is used as holdout at some point, 
+        ending up with a measure of model quality that is based on all of the rows in the dataset
     
-    * Benefits & usage
+  * Benefits & usage
 
-      - Gives a more accurate measure of model quality (but could take longer time to run)
+    - Gives a more accurate measure of model quality (but could take longer time to run)
         
-        + For **small** datasets, where extra computational burden isn't a big deal, you should run cross-validation
+      + For **small** datasets, where extra computational burden isn't a big deal, you should run cross-validation
 
-        + For **larger** datasets, a single validation set is sufficient (though defining small & large may differ)
+      + For **larger** datasets, a single validation set is sufficient (though defining small & large may differ)
+
+      + <https://scikit-learn.org/stable/modules/model_evaluation.html> (evaluating model quality)
+
+## XGBoost
+
+  * > from xgboost import XGBRegressor
+
+  * `Gradient boosting` = a method that goes through cycles to iteratively add models into an ensemble
+    
+    - Begins by initializing the ensemble with a single model, whose predictions can be pretty naive
+    (Even if its predictions are wildly inaccurate, subsequent additions to the ensemble will address those errors)
+    
+    - Then, start the cycle:
+      
+      + 1. Use the current ensemble to generate predictions for each observation in the dataset
+           To make a prediction, add the predictions from all models in the ensemble
+      
+      + 2. These predictions are used to calculate a loss function (ex. mean squared error)
+      
+      + 3. Use the loss function to fit a new model that will be added to the ensemble
+           Specifically, determine model parameters so that adding this new model to the ensemble will reduce the loss
+           ("gradient" in "gradient boosting": refers to the fact that we'll use gradient descent on the loss function to determine the parameters in this new model)
+      
+      + 4. Add the new model to ensemble
+      
+      + 5. Repeat
+
+  * ` XGBoost` = extreme gradient boosting
+
+    - An implementation of gradient boosting with several additional features focused on performance and speed
+
+    - Scikit-learn has another version of gradient boosting, but XGBoost has some technical advantages
+
+    - Parameter tuning
+
+      ```
+      my_model = XGBRegressor(n_estimators=1000, learning_rate=0.05, n_jobs=4)
+      my_model.fit(X_train, y_train, 
+             early_stopping_rounds=5, 
+             eval_set=[(X_valid, y_valid)], 
+             verbose=False)
+      ```
+      
+      + **n_estimators**
+
+        * Specifies how many times to go through the modeling cycle
         
-        + <https://scikit-learn.org/stable/modules/model_evaluation.html> (evaluating model quality)
+        * It is equal to the number of models that we include in the ensemble
 
-  ## XGBoost
+        * Too low a value causes underfitting, which leads to inaccurate predictions on both training data and test data
+
+        * Too high a value causes overfitting, which causes accurate predictions on training data, but inaccurate predictions on test data
+
+        * Typical values range from 100-1000, though this depends a lot on the **learning_rate**
+
+      + **early_stopping_rounds**
+
+        * Offers a way to automatically find the ideal value for n_estimators
+        
+        * Early stopping causes the model to stop iterating when the validation score stops improving, even if we aren't at the hard stop for n_estimators
+        
+        * It's smart to set a high value for n_estimators and then use early_stopping_rounds to find the optimal time to stop iterating
+
+        * Since random chance sometimes causes a single round where validation scores don't improve, you need to specify a number for how many rounds of straight deterioration to allow before stopping
+
+        * When using early_stopping_rounds, also need to set aside some data for calculating the validation scores - this is done by setting the eval_set parameter
+      
+      + **learning_rate**
+
+        * Instead of getting predictions by simply adding up the predictions from each component model, we can multiply the predictions from each model by a small number (known as the learning rate) before adding them in
+
+        * This means each tree we add to the ensemble helps us less
+        
+        * So, we can set a higher value for n_estimators without overfitting
+        If we use early stopping, the appropriate number of trees will be determined automatically.
+
+        * In general, a small learning rate and large number of estimators will yield more accurate XGBoost models, though it will also take the model longer to train since it does more iterations through the cycle
+
+       + **n_jobs**
+
+        * On larger datasets where runtime is a consideration, you can use parallelism to build your models faster
+        
+        * It's common to set the parameter n_jobs equal to the number of cores on your machine
+        
+        * On smaller datasets, this won't help
+          
+          - The resulting model won't be any better, so micro-optimizing for fitting time is typically nothing but a distraction
+        
+        * But, it's useful in large datasets where you would otherwise spend a long time waiting during the fit command.
+
   
 
-  ## Data Leakage
+## Data Leakage
