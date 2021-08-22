@@ -9,82 +9,75 @@
 
   * leaf = bottom of the tree where we make our predictions
 
-  ## Basic Data Exploration
+## Basic Data Exploration
   
-    * shape
+  * shape
     
-    * describe
+  * describe
 
-  ## Your First Machine Learning Model
+## Your First Machine Learning Model
 
+## Model Validation
 
-  ## Model Validation
+## Underfitting and Overfitting
 
+## Random Forests
 
-  ## Underfitting and Overfitting
+## Machine Learning Competitions
 
+  * Housing Prices Competition for Kaggle Learn Users
 
-  ## Random Forests
-
-
-  ## Machine Learning Competitions
-
-    * Housing Prices Competition for Kaggle Learn Users
-
-  ## Bonus Lesson: Intro to AutoML
-
+## Bonus Lesson: Intro to AutoML
 
 # Kaggle - Intermediate Machine Learning
 
-  ## Introduction
+## Introduction
 
-    * Review (RandomForest)
+  * Review (RandomForest)
 
-  ## Missing Values
+## Missing Values
 
-    * Mainly 3 Approaches
+  * Mainly 3 Approaches
     
-      - Drop columns with missing values
+    - Drop columns with missing values
     
-      - Imputation
+    - Imputation
     
-      - Imputation+
+    - Imputation+
 
-  ## Categorical Variables
+## Categorical Variables
     
-    * Mainly 3 Approaches
+  * Mainly 3 Approaches
 
-      - Drop Categorical Variables
+    - Drop Categorical Variables
 
-      - Ordinal Encoding
+    - Ordinal Encoding
       
-        + from sklearn.preprocessing import OrdinalEncoder
+      + > from sklearn.preprocessing import OrdinalEncoder
         
-        + Assigning each unique value to a different integer 
+      + Assigning each unique value to a different integer 
 
-        + Ordinal Variables (categorical variables with clear ordering)
+      + Ordinal Variables (categorical variables with clear ordering)
         
-        + Works well with tree-based models (DecisionTree, RandomForest...)
+      + Works well with tree-based models (DecisionTree, RandomForest...)
 
-          - loop over the categorical variables and apply the ordinal encoder separately to each column
+        * loop over the categorical variables and apply the ordinal encoder separately to each column
 
-      - One-Hot Encoding
+    - One-Hot Encoding
         
-        + from sklearn.preprocessing import OneHotEncoder
+      + > from sklearn.preprocessing import OneHotEncoder
 
-          - Set handle_unknown='ignore' to avoid errors when the validation data contains classes that aren't represented in the training data
+        * Set handle_unknown='ignore' to avoid errors when the validation data contains classes that aren't represented in the training data
           
-          - Setting sparse=False ensures that the encoded columns are returned as a numpy array (instead of a sparse matrix)
+        * Setting sparse=False ensures that the encoded columns are returned as a numpy array (instead of a sparse matrix)
 
-          - supply only the categorical columns that we want to be one-hot encoded
+        * supply only the categorical columns that we want to be one-hot encoded
 
-        + Creating new columns indicating the presence (or absence) of each possible value in the original data
+      + Creating new columns indicating the presence (or absence) of each possible value in the original data
 
-        + Nominal Variables (does not assume ordering)
+      + Nominal Variables (does not assume ordering)
 
-        + Generally does not perform well if the categorical variable takes on a large number of values
-
-
+      + Generally does not perform well if the categorical variable takes on a large number of values
 
   ## Pipelines
   
@@ -114,13 +107,14 @@
       
   ## Cross-Validation
 
-     * from sklearn.model_selection import cross_val_score
+    * > from sklearn.model_selection import cross_val_score
 
-     * Drawbacks of measuring model quality with validation data set
+    * Drawbacks of measuring model quality with validation data set
 
       - ex) From a dataset with 5000 rows, You will typically keep about 20% of the data as a validation dataset, or 1000 rows 
       
-        + This leaves some random chance in determining model scores => A model might do well on one set of 1000 rows, even if it would be inaccurate on a different 1000 rows
+        + This leaves some random chance in determining model scores 
+        => A model might do well on one set of 1000 rows, even if it would be inaccurate on a different 1000 rows
       
       - Generally, the larger the validation set, the less "noise" there is in our measure of model quality
       
