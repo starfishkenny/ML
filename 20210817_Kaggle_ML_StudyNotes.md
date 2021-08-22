@@ -56,6 +56,8 @@
       - Drop Categorical Variables
 
       - Ordinal Encoding
+      
+        + from sklearn.preprocessing import OrdinalEncoder
         
         + Assigning each unique value to a different integer 
 
@@ -63,19 +65,11 @@
         
         + Works well with tree-based models (DecisionTree, RandomForest...)
 
-        + `from sklearn.preprocessing import OrdinalEncoder`
-
           - loop over the categorical variables and apply the ordinal encoder separately to each column
 
       - One-Hot Encoding
-
-        + Creating new columns indicating the presence (or absence) of each possible value in the original data
-
-        + Nominal Variables (does not assume ordering)
-
-        + Generally does not perform well if the categorical variable takes on a large number of values
-
-        + `from sklearn.preprocessing import OneHotEncoder`
+        
+        + from sklearn.preprocessing import OneHotEncoder
 
           - Set handle_unknown='ignore' to avoid errors when the validation data contains classes that aren't represented in the training data
           
@@ -83,11 +77,19 @@
 
           - supply only the categorical columns that we want to be one-hot encoded
 
+        + Creating new columns indicating the presence (or absence) of each possible value in the original data
+
+        + Nominal Variables (does not assume ordering)
+
+        + Generally does not perform well if the categorical variable takes on a large number of values
+
+
+
   ## Pipelines
+  
+    * from sklearn.pipeline import Pipeline
 
     * A simple way to keep your data preprocessing and modeling code organized
-
-    * `from sklearn.pipeline import Pipeline`
 
     * Benefits
 
@@ -103,14 +105,15 @@
 
       - Define preprocessing steps
 
-        + `from sklearn.compose import ColumnTransformer`
+        + from sklearn.compose import ColumnTransformer
 
       - Define the model
 
       - Create & evaluate pipeline
+      
   ## Cross-Validation
 
-    * `from sklearn.model_selection import cross_val_score`
+    * from sklearn.model_selection import cross_val_score
 
     * Drawbacks of measuring model quality with validation data set
 
