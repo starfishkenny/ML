@@ -1,13 +1,14 @@
+
 # Kaggle - Intro to Machine Learning
 
-  ## How Models Work
+## How Models Work
   
-    * Decision Tree
-    
-    * fitting (or training) = capturing patterns from data
-    
-    * leaf = bottom of the tree where we make our predictions
- 
+  * Decision Tree
+
+  * fitting (or training) = capturing patterns from data
+
+  * leaf = bottom of the tree where we make our predictions
+
   ## Basic Data Exploration
   
     * shape
@@ -113,9 +114,9 @@
       
   ## Cross-Validation
 
-    * from sklearn.model_selection import cross_val_score
+     * from sklearn.model_selection import cross_val_score
 
-    * Drawbacks of measuring model quality with validation data set
+     * Drawbacks of measuring model quality with validation data set
 
       - ex) From a dataset with 5000 rows, You will typically keep about 20% of the data as a validation dataset, or 1000 rows 
       
