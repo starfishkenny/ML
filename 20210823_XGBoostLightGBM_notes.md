@@ -2,10 +2,11 @@
 
 ## References
 
-  * https://statkclee.github.io/model/model-python-xgboost-hyper.html (XGBoost paramter tuning basics)
+  * <https://statkclee.github.io/model/model-python-xgboost-hyper.html> (XGBoost paramter tuning basics)
 
-  * https://nurilee.com/2020/04/03/lightgbm-definition-parameter-tuning/ (LightGBM paramter tuning basics)
+  * <https://nurilee.com/2020/04/03/lightgbm-definition-parameter-tuning/> (LightGBM paramter tuning basics)
 
+  * <https://neptune.ai/blog/lightgbm-parameters-guide?utm_source=datacamp&utm_medium=post&utm_campaign=blog-lightgbm-parameters-guide&utm_campaign=News&utm_medium=Community&utm_source=DataCamp.com> (LightGBM parameters)
 ## XGBoost
 
 ## LightGBM
@@ -26,3 +27,9 @@
     - rf : Random Forest
     - dart : Dropouts meet Multiple Additive Regression Trees
     - goss : Gradient-based One-Side Sampling
+
+ * objective: defining model to apply (defauly: regression)
+
+    - regression: 회귀분석
+    - binary: 이진 분류
+    - multiclass: 다중 분류
