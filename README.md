@@ -15,4 +15,4 @@
   - Reviewed through Python basics (Day1 ~ Day7)
   - Machine Learning introduction (Day8 ~ Day11)
   - Intermediate Machine Learning (Day12 ~ Day14)
-  - In-class Prediction Competition (Day15 ~ Day31) (<https://www.kaggle.com/c/30-days-of-ml/overview>)
+  - In-class Prediction Competition (Day15 ~ Day31)
