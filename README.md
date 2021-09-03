@@ -22,3 +22,5 @@
   - In-class Prediction Competition (Day15 ~ Day31)
     
     + Ranked 1375th (total 7,573 teams)
+
+* Kaggle Tabular Playground Series - Sep 2021 (2021.09 ~ )
